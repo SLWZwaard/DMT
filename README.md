@@ -36,10 +36,12 @@ Ensure CMake and OpenCV is installed, as well as a C++11 compiler. For the origi
 # Build instructions
 Download the source code to a folder of choice. 
 Change the OpenCV_DIR to the correct path in the CMakeLists.txt if needed.
+
 From CMD:
--cd to current directory
-cmake .
-cmake --build . --config Release
+* -cd to current directory
+* cmake .
+* cmake --build . --config Release
+
 This should, assuming that Microsoft Visual Studio is installed, create a Microsoft Visual Studio Project file, as well as compiling the code using the last command.
 Please see the Using DLib from C++ section on http://dlib.net/compile.html  for more information.
 
