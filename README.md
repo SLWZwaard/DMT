@@ -2,14 +2,14 @@
 Distributed Model Training (DMT): Distributed training, testing and aggregation using Weighted Bin Aggregation (WBA) and Mean Weight Matrix Aggregation (MWMA) for object detection and landmark localization models. Created by S.L.W. Zwaard from the Hauge University of Applied Sciences. This content is developed as part of a joint research project for the Quantum and Computer Engineering department at Delft University of Technology, the Neuroscience department of the Erasmus Medical Center and the Babylab from the Princeton Neuroscience Institute. If any of this is of use to you, please include the following reference in your related work: "Privacy-Preserving Algorithms for Object Detection& Localization Using Distributed Machine Learning"
 
 
-# General introduction
+# Introduction
 This program is designed and created to train, aggregate and test models for object detection and landmark localization.
 Using a GUI, the user can select to train new models, combine existing or newly trained models, or test existing models. Training and testing datasets can also be selected using the GUI.
 The object detection models consist of a Support Vector Machine (SVM) classifier with a Histogram of Orientated Gradients (HOG) feature extractor, using the DLib library implementation.
 For landmark localization, the Ensemble of Regression Tree (ERT) implementation of DLib is implemented. For both models, DLib implementation for training is included as part of the program, which can be configured by the GUI.
 Training settings are also adjusted through the GUI when the program is run with training mode enabled. If not all training data is present on the same node, for example because of privacy concerns, the system can make use of distributed training through the aggregation of locally trained models.
 For model aggregation, the Weighted Bin Aggregation (WBA) algorithm is used for the ERT models and the Mean Weighted Matrix Aggregation (MWMA) algorithm is used for the SVM with HOG models.
-When combining an SVM model, a mean average is taken for the matrix of new model, representing the models used as input. The new SVM model can be used in the same manner as normal SVM models and require no changes to other DLib programs.
+When combining an SVM model, a mean average is taken for the matrix of new model, representing the models used as input. The new SVM model can be used in the same manner as normal SVM models and requires no changes to other DLib programs.
 The combination of ERT models is done by creating a larger forest with weighted subresults, from which an average result is taken when the model is used. A combined ERT model uses the same code as a normal ERT model, but adds on a layer for the calculation and averaging of sub results to the final shape prediction.
 Therefore, the combined ERT models are saved as CERT models. The CERT models are mostly the same in use and give the same return in the shape predict functions as normal ERT models, but the inclusion of the CERT code files are needed for a DLib project to make use of the new combined models.
 For a detailed explanation of both algorithms, please see the paper given in the DMT section above.
@@ -63,6 +63,3 @@ Paths for model output and training and testing datasets must be given in the ma
 both training and aggregation of a model type is selected, the trained model is used as input in the aggregation process. For model aggregation and testing, a test dataset must always be specified, as well as models to be used.
 Multiple models can be selected through the use of the asterisk character. For example, all SVM models in a folder can be used with the "\*.svm" path.
 Once all settings are provided in the main window, the start program button on top can be used to proceed with the training, testing or aggregation process. Once the program is completed, new settings can be provided, and the start button can be used again for the next run.
-
-# Reference
-
